@@ -1,1 +1,16 @@
-It is evident that most papers on algorithms tend to ignore the cost of virtual address translation, though researchers recognize these costs. This is because of the model that researchers follow, and that is the classic RAM model without virtual memory. Papers like “The cost of virtualization” by Ulrich Drepper and other materials like “AMD64 Architecture Programmer’s Manual Vol 2” describe the implementation of virtual memory and its associated costs during translation; but no study has tried to develop a model that considers these costs for algorithmic analysis until VAT is proposed recently. Keeping this trend in the background, it is not surprising that there has been any related work that carefully verifies the experimental results and strengthens the new model that accounts for these costs. Our contribution by experimentally examining and comparing the proposed model, will try to fill this gap.  
+\section{Previous Work}
+
+It is evident that most papers on algorithms tend to ignore the cost of virtual
+address translation, though researchers recognize these costs. This is because
+of the model that researchers follow, and that is the classic RAM model without
+virtual memory. Papers like “The cost of virtualization” by Ulrich Drepper and
+other materials like “AMD64 Architecture Programmer’s Manual Vol 2” describe
+the implementation of virtual memory and its associated costs during
+translation; but no study has tried to develop a model that considers these
+costs for algorithmic analysis prior to the recently proposed VAT model.
+
+Keeping this trend in mind, it is not surprising that there has been little
+related work that carefully verifies the experimental results and strengthens
+the new model that accounts for these costs. Our contribution, experimentally
+examining and comparing the proposed model to the older model, will fill this
+gap. 
