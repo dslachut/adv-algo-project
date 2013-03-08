@@ -1,0 +1,12 @@
+* permute
+* heapify
+* heapsort
+* quicksort
+* mergesort
+* insertion sort
+* radix and/or bucket sort
+* binary search
+* binary search tree
+* iterating a linked list
+* hash table?
+* FFT
