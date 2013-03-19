@@ -1,4 +1,4 @@
-#!/usr/bin/tcc -run
+//#!/usr/bin/tcc -run
 /*
  * Permute Array
  *
@@ -8,11 +8,11 @@
 
 #include <time.h>
 #include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
 
-void permute(int*, int);
+//void permute(int*, int);
 
-int main(){
+/*int main(){
   int A[4] = {9,8,7,6};
   int n = 4;
   int i;
@@ -22,6 +22,7 @@ int main(){
   }
   printf("\n");
 }
+*/
 
 void permute(int *A, int n) {
   int i,r,temp;
