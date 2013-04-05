@@ -16,6 +16,7 @@
   int A[4] = {9,8,7,6};
   int n = 4;
   int i;
+  srand(time(NULL));
   permute(A,n);
   for (i = 0; i < n; i++){
     printf("%d ",A[i]);
@@ -26,7 +27,6 @@
 
 void permute(int *A, int n) {
   int i,r,temp;
-  srand(time(NULL));
   for (i = n-1; i > 0; i--) {
     r = rand() % i;
     temp = A[i];
