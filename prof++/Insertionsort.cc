@@ -40,6 +40,8 @@ void timeInsertionsort(){
 		delete[] A;
 		A = 0;
 		fprintf(fp,"%d,%f\n",i,(double)(end-start)/CLOCKS_PER_SEC);
+		fclose(fp);
+		fp = fopen("insertionsortResult.csv","a");
 	}}
 	fclose(fp);
 }

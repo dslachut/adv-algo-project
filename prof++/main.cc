@@ -24,8 +24,8 @@ int main(void) {
 	srand(time(0));
 	timePermute();
 	timeQuicksort();
-	timeInsertionsort();
 	timeHeapsort();
 	timeBinarysearch();
+	timeInsertionsort();
 	return 0;
 }
