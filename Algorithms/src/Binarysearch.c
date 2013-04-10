@@ -1,4 +1,4 @@
-#!/usr/bin/tcc -run
+//#!/usr/bin/tcc -run
 /* 
  * Binary search in sorted array
  * 
