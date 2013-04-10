@@ -1,14 +1,14 @@
-//#!/usr/bin/tcc -run
 /*
- * Quicksort Array
+ * Quicksort.cc
  *
- *
- *
+ *  Created on: Apr 9, 2013
+ *      Author: david
  */
 
-//#include <time.h>
+#include "Quicksort.h"
 #include <stdlib.h>
-//#include <stdio.h>
+#include <stdio.h>
+#include <time.h>
 
 void swap(int* A, int a, int b){
   int tmp = A[a];
@@ -45,14 +45,23 @@ void quicksort(int* A, int l, int r) {
   }
 }
 
-/*int main() {
-  int n = 10;
-  int A[10] = {9,8,7,6,11,33,-1,5,8,12};
-  int i;
-  srand(time(NULL));
-  quicksort(A,0,n-1);
-  for (i = 0; i < n; i++){
-    printf("%d ",A[i]);
-  }
-  printf("\n");
-}*/
+void timeQuicksort(){
+	FILE *fp;
+	fp = fopen("quicksortResult.csv","w");
+	clock_t start,end;
+	for (int i = 1; i <= 268435456; i *= 2){
+	for (int t = 0; t < 10; t++) {
+		int* A = new int[i];
+		for (int j = 0; j < i; j++){
+			A[j] = rand() % i;
+		}
+		start = clock();
+		quicksort(A,0,i-1);
+		end = clock();
+		//cleanArray(A,i);
+		delete[] A;
+		A = 0;
+		fprintf(fp,"%d,%f\n",i,(double)(end-start)/CLOCKS_PER_SEC);
+	}}
+	fclose(fp);
+}
