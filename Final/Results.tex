@@ -10,7 +10,7 @@
     times. These will be used later to make comparisons.
     
     \begin{tabular}{ccc}
-      Algorithm     & Average Case  & Worst Case   \\
+      Algorithm     & Average Case  & Worst Case   \\\hline
       BinarySearch  & $O(\log(n))$  & $O(\log(n))$ \\
       Heapsort      & $O(n\log(n))$ & $O(n\log(n))$\\
       Insertionsort & $O(n^2)$      & $O(n^2)$     \\
@@ -22,11 +22,22 @@
     algorithms reference text.
 
   \subsection{VAT}
-     This subsection will have a little more to it than the RAM section. There
-     will be a table telling about the calculated running times of our 
-     algorithms. There might also be some text describing some of the 
-     difficulties or nuances of doing the analyses with the new model.
-
+    The VAT model presents more of a challenge than checking a reference text.
+    Jurkiewicz and Mehlorn provided analyses[5] for two of the algorithms. 
+    Those results are here:
+    
+    \begin{tabular}{cc}
+      Algorithm    & VAT Complexity\\\hline
+      BinarySearch &
+$O\left(\frac{r}{k}\log(\frac{2n}{P})\log(\frac{2dn}{W})\right)$ \\
+      Heapsort     & $O\left(r(d+\frac{pn}{P})\right)$ \\
+    \end{tabular}
+    
+    Where $r$ is the unit cost of translation (length/number of insertions in
+    the TC). $d$ is the length of translation. $W$ represents the nodes of the
+    translation tree that are in the TC. $P$ is the page size. And, $n$ is the
+    input size.
+  
   \subsection{Benchmarks}
     Benchmarking the algorithms on a modern computer is a key step in
     determining whether VAT or RAM more accurately models a computer for the
