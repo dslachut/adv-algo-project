@@ -24,4 +24,26 @@
      difficulties or nuances of doing the analyses with the new model.
 
   \subsection{Benchmarks}
-     
+    Benchmarking the algorithms on a modern computer is a key step in
+    determining whether VAT or RAM more accurately models a computer for the
+    purposes of algorithm analysis.
+    
+    BinarySearch of an integer array was the first algorithm measured.
+    Reviewing the results of timing, one would see all search times as 0.000000
+    seconds. The BinarySearch procedure executed too quickly, even on a 2 GiB
+    array, to produce a result within the precision of the program's
+    measurement.
+   \begin{center}
+    \includegraphics[width=3in]{heapsort.png}
+    \includegraphics[width=3in]{insertionsort.png}
+   \end{center}
+    
+    The sorting algorithms were executed on randomly generated integer arrays,
+    and the permute procedure was executed on a sorted array to yield a
+    randomized array of integers. The accompanying scatter plots show the
+    execution times of each procedure at each size input.
+    
+   \begin{center}
+    \includegraphics[width=3in]{permute.png}
+    \includegraphics[width=3in]{quicksort.png}
+   \end{center}
