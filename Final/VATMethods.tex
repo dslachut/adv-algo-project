@@ -1,22 +1,51 @@
 \subsection{VAT Model Analysis}
+As mentioned in the previous sections, the VAT model introduces the concept of
+virtual memory to the existing RAM machines. The motivation behind using the
+VAT model is multiprocessing where several programs are executed concurrently
+on the same machine. In this scenario the VAT model provides each of the
+concurrently running programs with a linear address space with non negative
+indices. But these addresses are virtual and are simulated with one physical
+memory. This implies that to get the actual physical memory location, some
+translation from the virtual address space to the physical address space is
+required which in turn adds some costs to the algorithmic complexity. Costs are
+also associated with page faults and TLB misses.
 
-  We learned how to use the VAT model.
-  We overview how to do that here, but point you to the J\&M article to explain it.
-  We used the VAT model to analyze our set of algorithms.
-  
-  ********************************************************************START FROM BELOW
-  As mentioned in the previous sections, the VAT model introduces the concept of virtual memory to the existing RAM machines. The motivation behind using the VAT model is multiprocessing where several programs are executed concurrently on the same machine. In this scenario the VAT model provides each of the concurrently running programs with a linear address space with non negative indices. But these addresses are virtual and are simulated with one physical memory. This implies that to get the actual physical memory location, some translation from the virtual address space to the physical address space is required which in turn adds some costs to the algorithmic complexity. Costs are also associated with page faults and TLB misses.
-The main data structure that is used for the translation is a tree with outdegree K and the translation process is a walk in this tree. The tree is also referred as the page table (consisting of entries that map virtual to physical addresses). The leaves of the tree store indices of physical pages and the offset determines the cell in the physical address.
-The translation process is done by a Translation Cache (TC) residing in the RAM which stores some nodes of the translation tree. The TC is changed by insertions and evictions and follows efficient replacement strategies[5]. To translate a virtual address to a physical address we start from the root node of our tree and continue traversing the nodes as mentioned in the virtual address and stop when we reach a leaf. Therefore translating a virtual address requires access to the nodes of the translation path in the TC in the correct order. The length of the translation is the number of insertions performed during translation and the cost of the translation is ‘r’ times the length. An elaborate explanation of the translation tree can be found in the appendix section of our reference paper.[5]
-For simplicity, we consider the virtual memory of a single program. Now for analyzing the translation cost of algorithms as a function of problem size n and memory m, we consider m = Θ(n) and we assume.[5]
+The main data structure that is used for the translation is a tree with
+outdegree $K$ and the translation process is a walk in this tree. The tree is
+also referred as the page table (consisting of entries that map virtual to
+physical addresses). The leaves of the tree store indices of physical pages and
+the offset determines the cell in the physical address.
 
-•  rd <= P; the cost of moving a single translation path to the TC is no more than the size of a page, i.e., if at least one instruction is performed for each cell in a page, the cost of translating the index of the page can be amortized.
+The translation process is done by a Translation Cache (TC) residing in the RAM
+which stores some nodes of the translation tree. The TC is changed by
+insertions and evictions and follows efficient replacement strategies[5]. To
+translate a virtual address to a physical address we start from the root node
+of our tree and continue traversing the nodes as mentioned in the virtual
+address and stop when we reach a leaf. Therefore translating a virtual address
+requires access to the nodes of the translation path in the TC in the correct
+order. The length of the translation is the number of insertions performed
+during translation and the cost of the translation is $r$ times the length. An
+elaborate explanation of the translation tree can be found in the appendix
+section of our reference paper.[5]
 
-•	K >= 2, i.e., the fanout of the translation tree is at least two.
+For simplicity, we consider the virtual memory of a single program. Now for
+analyzing the translation cost of algorithms as a function of problem size n
+and memory m, we consider $m = \Theta(n)$ and we assume.[5]
 
-•	m/P<=Kd<=2m/P, i.e., the translation tree suffices to translate all addresses but is not large. As a consequence log(m/P)<=d logK=dk<=1+log(m/P) and hence logk(m/P)<=d<=1/k(1 + log(m/P)).
+• $rd \leq P$ the cost of moving a single translation path to the TC is no more
+than the size of a page, i.e., if at least one instruction is performed for
+each cell in a page, the cost of translating the index of the page can be
+amortized.
 
-•	d <= W, i.e., the translation cache can hold at least one translation path.
+• $K \geq 2$ the fanout of the translation tree is at least two.
 
-We have used the above concepts to calculate the algorithmic complexities of the algorithms that we have benchmarked. In our final paper, we plan to include detailed mathematical workings for each of the algorithms in the VAT model. Also the graphical representations in the following sections provide an intuitive summary of our findings.
+• $\frac{m}{P}\leq Kd\leq\frac{2m}{P}$ the translation tree suffices to
+translate all addresses but is not large. As a consequence 
+$\log(\frac{m}{P})\leq d \log(K)=Kd\leq1+\log(\frac{m}{P})$ and hence
+$\log(k)(\frac{m}{P})\leq d\leq \frac{1}{k}(1 + log(\frac{m}{P}))$.
 
+• $d \leq W$ the translation cache can hold at least one translation path.
+
+We have used the above concepts to calculate the algorithmic complexities of
+the algorithms that we have benchmarked. Also, the graphical representations in
+the following sections provide an intuitive summary of our findings.
