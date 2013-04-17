@@ -1,10 +1,38 @@
 \section{Methods}
-  Here we describe in excruciating detail what we did.
   
-  \subsection{Implementations}
-  We took a set of standard reference algorithms including permute, and heapsort.
-  We turned them into C procedures.
-  We ran each one a dozen times on each of a wide variety of sizes of inputs.
-  On each run, we timed the execution.
-  We then took those running times and figured their growth rates.
-  This gives us real world running times.
+  Three components are necessary to determine which model of computation yields
+  a more accurate analysis of the performance of algorithms running on real
+  hardware. First, there must be implementations of algorithms running on real
+  hardware. Running time benchmarks establish a ground truth for doing
+  comparisons. Second, the algorithms must be analyzed according to the new VAT
+  model. And third, the algorithms must be analyzed using the RAM model. The 
+  authors selected five well-studied algorithms which have been previously
+  analyzed with the RAM model.
+  
+  \subsection{Benchmarking}
+  
+  To generate a standard for comparison, the authors selected a set of five
+  algorithms:Binary Search, Heapsort, Insertionsort, Quicksort, and Permute. 
+  These five are well understood, have a variety of running times, and should
+  be straightforward enough to analyze on the new model.
+  
+  The algorithms were coded in C++ and compiled with GCC and Make. They were
+  run on a VirtualBox virtual machine, with Debian GNU/Linux for 32 bit
+  x86 processors. The virtual machine was hosted by 64 bit Windows 7 on a 2.0
+  GHz Core i7 processor. The physical machine has 8 GiB of memory and four
+  processor cores, of which 2.5 GiB and 2 cores were allocated to the virtual
+  machine. Find a link to the source code in the appendix.
+  
+  The benchmark program ran each procedure 10 times on each input size. The 
+  smallest input to each procedure was an integer array of length 1. The input
+  doubled in size after every tenth run. The maximum size input array to 
+  Binary Search was 536870912 32 bit integers, the 2 GiB size reaching the 
+  limits of the machine's memory capacity. The maximum size input array to 
+  Insertionsort was 1048576 32 bit integers, the execution time on any larger
+  input becoming excessive and overflowing the capacity of the timer. The other
+  three procedures had maximum size input arrays of 268435456 32 bit integers,
+  each array taking up 1 GiB of system memory.
+  
+  The benchmark program timed each run of each procedure on each size of input.
+  The raw results are available at the link provided in the appendix. The next
+  section of the paper provides a summary presentation.

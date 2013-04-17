@@ -1,13 +1,26 @@
 \section{Introduction}
   
-  We solved the problem of demonstrating whether the Virtual Address Translation
-  (VAT) model of computation--presented by Jurkiewicz and Mehlhorn--is a 
-  better model than the Random Access Machine (RAM) model for analyzing the 
-  performace of algorithms when implemented on modern computing hardware.
+  The Random Access Machine (RAM) model of computation is widely used for
+  analyzing the performace of algorithms. Some, such as Jurkiewicz and Mehlhorn
+  question whether this model accurately represents the complexities of modern
+  hardware. They propose the Virtual Address Translation (VAT) model of
+  computation to account for added complexities, such as the memory address
+  translation needed to refference ever larger amounts of system memory in 
+  modern computers.
+  
+  This paper analyzes a set of algorithms using both models, VAT and RAM,
+  and presents the results of benchmarking these algorithms on real hardware.
+  The goal of this is to then use the results of the analysis and benchmarks
+  to determine which model more accurately reflects the real hardware.
   
   The novel contribution includes not only the benchmarking of these procedures,
-  but also the comparative analysis of the two models.
+  but also the comparative analysis of the two models. This work could be very
+  significant if VAT is shown more accurate than RAM. We would be the first to
+  independently verify this and we would be contributing some of the first
+  analysis of common, reference algorithms. (We're still working on results.)
 
-  This work could be very significant if VAT is indeed superior to RAM. We would
-  be the first to independently verify this and we would be contributing some of
-  the first analysis of common, reference algorithms.
+  This paper is organized as follows: Section 2 presents the paper's
+  motivation. Section 3 addresses previous work. Section 4 details how the
+  benchmarks and analyses were done. Section 5 presents the results. Section 6
+  discusses the results, selecting the more accurate model. Section 7 and 8 
+  address the potential for future work and conclude the paper.
