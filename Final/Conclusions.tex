@@ -1,18 +1,15 @@
 \section{Conclusions}
-Our paper has a focused aim of experimentally verifying the VAT model of 
-algorithmic complexity. Jurkiewicz and Melhorn has come up with an innovative 
-concept of incorporating the costs of virtual address translation[5] in 
-algorithmic complexities, but did not provide enough evidence to support the 
-use of this new model. Thus, an experimental verification was required and we 
-have managed to do that with our findings. Our straightforward verification 
-and benchmarking process will help computer scientists decide whether to shift 
-to this new VAT model or not. Though we experienced some difficulties in the 
-mathematical deduction and we plan to refine our calculations in future, our 
-experimental results can be still be used for decision making. As we 
-continuously analyze and benchmark more algorithms, we will be able to present 
-our personal view on using the VAT model, in our final paper. Should the 
-project determine that the VAT model is indeed superior to other existing 
-models of computation, the field of algorithm analysis will be changed and its 
-predictions will more accurately reflect the real state of the world. This will 
-enable better algorithm design and help to allow computer scientists to 
-continue advancing information technology to meet the needs of the society.
+The aim of this paper was to experimentally compare two models of computation,
+the Random Access Machine model and a new model devised by Jurkiewicz and
+Mehlhorn that incorporates the costs of Virtual Address Translation. This paper
+began by introducing the contenders, explained the motivation to look for a new
+model of computation, and noted the relevant prior work. The paper continued by
+describing a method for comparing the two models and presenting the results of
+that work. Having measured the running times of a set of algorithms and
+compared the results with the predictions of the models, this paper determined
+that the incumbent RAM model is superior to the new VAT model.
+
+While it would have been exciting to validate this brand new model, to
+potentially contribute to a small revolution in the field, it is comforting to
+know that the widely used RAM model has earned its place by
+continually demonstrating its validity and utility.
