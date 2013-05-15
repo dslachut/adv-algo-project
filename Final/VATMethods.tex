@@ -8,7 +8,7 @@ indices. But these addresses are virtual and are simulated with one physical
 memory. This implies that to get the actual physical memory location, some
 translation from the virtual address space to the physical address space is
 required which in turn adds some costs to the algorithmic complexity. Costs are
-also associated with page faults and TLB misses.
+also associated with page faults and translation lookup buffer (TLB) misses.
 
 The main data structure that is used for the translation is a tree with
 outdegree $K$ and the translation process is a walk in this tree. The tree is
@@ -46,6 +46,5 @@ $\log(k)(\frac{m}{P})\leq d\leq \frac{1}{k}(1 + log(\frac{m}{P}))$.
 
 • $d \leq W$ the translation cache can hold at least one translation path.
 
-We have used the above concepts to calculate the algorithmic complexities of
-the algorithms that we have benchmarked. Also, the graphical representations in
-the following sections provide an intuitive summary of our findings.
+This is only a summary of the model, and any seeking further explanation ought
+to consult Jurkiewicz and Mehlhorn [5].

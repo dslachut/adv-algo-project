@@ -12,7 +12,7 @@
   \subsection{Benchmarking}
   
   To generate a standard for comparison, the authors selected a set of five
-  algorithms:Binary Search, Heapsort, Insertionsort, Quicksort, and Permute. 
+  algorithms: Binary Search, Heapsort, Insertionsort, Quicksort, and Permute. 
   These five are well understood, have a variety of running times, and should
   be straightforward enough to analyze on the new model.
   
@@ -28,10 +28,12 @@
   doubled in size after every tenth run. The maximum size input array to 
   Binary Search was 536870912 32 bit integers, the 2 GiB size reaching the 
   limits of the machine's memory capacity. The maximum size input array to 
-  Insertionsort was 1048576 32 bit integers, the execution time on any larger
-  input becoming excessive and overflowing the capacity of the timer. The other
-  three procedures had maximum size input arrays of 268435456 32 bit integers,
-  each array taking up 1 GiB of system memory.
+  Insertionsort was 1048576 32 bit integers. The execution time on any larger
+  input to Insertionsort became excessive as it surpassed 4 billion
+  microseconds (over 1 hr and 6 minutes) and overflowed the 32-bit integer
+  used by the C standard library to track the time. The other three procedures
+  had maximum size input arrays of 268435456 32 bit integers, each array taking
+  up 1 GiB of system memory.
   
   The benchmark program timed each run of each procedure on each size of input.
   The raw results are available at the link provided in the appendix. The next
