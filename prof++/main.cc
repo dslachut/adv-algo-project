@@ -22,10 +22,10 @@
 
 int main(void) {
 	srand(time(0));
+	timeInsertionsort();
 	timePermute();
 	timeQuicksort();
 	timeHeapsort();
 	timeBinarysearch();
-	timeInsertionsort();
 	return 0;
 }

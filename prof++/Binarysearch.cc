@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
 
 int binarysearch(int* A, int l, int r, int n){
   int m = (r + l) / 2;
@@ -29,7 +30,8 @@ int binarysearch(int* A, int l, int r, int n){
 void timeBinarysearch() {
 	FILE *fp;
 	fp = fopen("binarysearchResult.csv","w");
-	clock_t start,end;
+	//clock_t start,end;
+	struct timeval s,e;
 	int toFind,foundAt;
 	for (int i = 1; i <= 536870912; i *= 2){
 	for (int t = 0; t < 10; t++) {
@@ -38,13 +40,16 @@ void timeBinarysearch() {
 			A[j] = j+1;
 		}
 		toFind = (rand() % ((3 * i)/2)) - (i/3);
-		start = clock();
+		//start = clock();
+		gettimeofday(&s, NULL);
 		foundAt = binarysearch(A,0,i-1,toFind);
-		end = clock();
+		gettimeofday(&e, NULL);
+		//end = clock();
 		//cleanArray(A,i);
 		delete[] A;
 		A = 0;
-		fprintf(fp,"%d,%f,\tfound %d at position %d\n",i,(double)(end-start)/CLOCKS_PER_SEC,toFind,foundAt);
+		//fprintf(fp,"%d,%f,\tfound %d at position %d\n",i,(double)(end-start)/CLOCKS_PER_SEC,toFind,foundAt);
+		fprintf(fp,"%d,%ld,\tfound %d at position %d\n",i,(e.tv_sec*1000000 + e.tv_usec)-(s.tv_sec*1000000 + s.tv_usec,toFind,foundAt));
 	}}
 	fclose(fp);
 

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
 
 void swap(int* A, int a, int b){
   int tmp = A[a];
@@ -48,20 +49,24 @@ void quicksort(int* A, int l, int r) {
 void timeQuicksort(){
 	FILE *fp;
 	fp = fopen("quicksortResult.csv","w");
-	clock_t start,end;
+	//clock_t start,end;
+	struct timeval s,e;
 	for (int i = 1; i <= 268435456; i *= 2){
 	for (int t = 0; t < 10; t++) {
 		int* A = new int[i];
 		for (int j = 0; j < i; j++){
 			A[j] = rand() % i;
 		}
-		start = clock();
+		//start = clock();
+		gettimeofday(&s, NULL);
 		quicksort(A,0,i-1);
-		end = clock();
+		gettimeofday(&e, NULL);
+		//end = clock();
 		//cleanArray(A,i);
 		delete[] A;
 		A = 0;
-		fprintf(fp,"%d,%f\n",i,(double)(end-start)/CLOCKS_PER_SEC);
+		//fprintf(fp,"%d,%f\n",i,(double)(end-start)/CLOCKS_PER_SEC);
+		fprintf(fp,"%d,%ld\n",i,(e.tv_sec*1000000 + e.tv_usec)-(s.tv_sec*1000000 + s.tv_usec));
 	}}
 	fclose(fp);
 }
