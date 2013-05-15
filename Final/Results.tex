@@ -32,19 +32,52 @@
     an algorithm analyst to find it worth the effort to use.
     
     Jurkiewicz and Mehlorn provided analyses for two of the algorithms [5]. 
-    Those results are here:
+    Those results are here:\\
     
     \begin{tabular}{cc}
       Algorithm    & VAT Complexity\\\hline
       BinarySearch &
-$O\left(\frac{r}{k}\log(\frac{2n}{P})\log(\frac{2dn}{W})\right)$ \\
+	$O\left(\frac{r}{k}\log(\frac{2n}{P})\log(\frac{2dn}{W})\right)$ \\
       Heapsort     & $O\left(r(d+\frac{pn}{P})\right)$ \\
-    \end{tabular}
+    \end{tabular}\\
     
     Where $r$ is the unit cost of translation (length/number of insertions in
     the TC). $d$ is the length of translation. $W$ represents the nodes of the
     translation tree that are in the TC. $P$ is the page size. And, $n$ is the
     input size.
+    
+    Extending on the work that Jurkiewicz and Mehlorn do to give bounds on
+    random access and sequential access, one can give VAT analyses for Permute
+    and for Insertionsort.\\
+    
+    \begin{tabular}{cc}
+      Algorithm & VAT Complexity\\\hline
+      Sequential Access & $O\left(2P+\frac{2n}{d}\right)$\\
+      Random Access & $O\left(\frac{r}{k}n(1+log(n/P))\right)$
+    \end{tabular}\\
+    
+    Permute consists of simultaneous random and sequential accesses to an
+    array. This, then, makes the sequential accesses non-sequential and random.
+    So, its time can be bounded by 
+    $O\left(2\frac{r}{k}n(1+log(n/P))\right)$.
+    This becomes $O\left(\frac{r}{k}n(1+log(n/P))\right)$.
+    
+    Insertionsort consists of nested sequential accesses to an array. This
+    makes the inner accesses truly sequential and the outer accesses random,
+    yielding $O\left( (2P+\frac{2n}{d}) \frac{r}{k}n(1+log(n/P)) \right)$.
+    
+    From these results, one would expect the following behaviours in an
+    experiment where $n$ is changed and other variables held constant:\\
+    
+    \begin{tabular}{cc}
+      Algorithm & VAT Complexity\\\hline
+      BinarySearch & $O\left(\log^2(n)\right)$\\
+      Heapsort & $O\left( n \right)$\\
+      Permute & $O\left( n\log(n) \right)$\\
+      Insertionsort & $O\left( n^2 \log(n) \right)$\\
+    \end{tabular}\\
+    
+    The authors were unable to analyze Quicksort by the submission deadline.
   
   \subsection{Benchmarks}
     Benchmarking the algorithms on a modern computer is a key step in
