@@ -52,17 +52,30 @@ $O\left(\frac{r}{k}\log(\frac{2n}{P})\log(\frac{2dn}{W})\right)$ \\
     seconds. The BinarySearch procedure executed too quickly, even on a 2 GiB
     array, to produce a result within the precision of the program's
     measurement.
-   \begin{center}
-    \includegraphics[width=3in]{heapsort.png}
-    \includegraphics[width=3in]{insertionsort.png}
-   \end{center}
-    
+   
     The sorting algorithms were executed on randomly generated integer arrays,
     and the permute procedure was executed on a sorted array to yield a
     randomized array of integers. The accompanying scatter plots show the
     execution times of each procedure at each size input.
-    
+   
    \begin{center}
-    \includegraphics[width=3in]{permute.png}
-    \includegraphics[width=3	in]{quicksort.png}
+    \includegraphics[width=4in]{heapsort.png}\\
+    \includegraphics[width=4in]{quicksort.png}
    \end{center}
+   
+   The Heapsort and Quicksort times were consistent with $O(n\log(n))$
+   runtimes. Heapsort has a much higher absolute running time and other
+   behaviour consistent with that algorithm requiring a lengthier procedure.
+   
+   \begin{center}
+    \includegraphics[width=4in]{permute.png}
+   \end{center}
+   
+   The Permute procedure shows linear time behaviour.
+   
+   \begin{center}
+    \includegraphics[width=4in]{insertionsort.png}
+   \end{center}
+   
+   Insertionsort shows a $O(n^2)$ running time that one sees very clearly on
+   the above scatterplot.

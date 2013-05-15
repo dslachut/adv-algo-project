@@ -1,17 +1,36 @@
 \section{Discussion}
 
-This is where we discuss results.
+The results of the experiments come out very clearly from the data. This
+section compares the RAM model to the benchmarks, then the VAT model to the
+benchmarks, and lastly the VAT model to the RAM model to determine which model
+is superior.
 
-  \subsection{RAM vs Reality}
-    Here is where we will compare the benchmark results with the standard runtimes.
-    This will need a table to compare the two algorithm-by-algorithm.
-
-  \subsection{VAT vs Reality}
-    Here is where we will compare the benchmark results with the new model's runtimes.
-    This will need a table to compare the two algorithm-by-algorithm.
-
-  \subsection{VAT vs RAM}
-    The big finale, old vs new, here is where we will declare a winner between RAM
-    and VAT.
-    This will likewise need a table.
-    Really all three tables could be combined into one good chart for the whole section.
+    \paragraph{RAM and Benchmarks}
+    As noted in the previous section, the running times of Heapsort and
+    Quicksort are consistent with $O(n\log(n))$ behaviour, Insertionsort with
+    $O(n^2)$ behaviour, and Permute with linear behaviour. These results are
+    the same as predicted by the RAM model. 
+    
+    \paragraph{VAT not Necessary}
+    The results of the benchmarks are not consistent with Jurkiewicz and
+    Mehlhorn. They presented, as part of the motivation for their new model, a 
+    graph showing large differences between the RAM-predicted time complexities
+    and the actual running times of a set of algorithms [5]. In particular,
+    Permute, Heapsort, and BinarySearch were shown in that paper to
+    significantly depart from the RAM model at input sizes near $2^{21}$.
+    Benchmarks done on a virtual machine could show this discrepancy even more
+    clearly, as the virtual address translation would need to be done on both
+    the virtual and the physical machines.
+    
+    The benchmarks described above present a different story. This paper tests 
+    those three algorithms at input sizes well above $2^{21}$ and finds no 
+    noticeable departure from the RAM model which would necessitate a new model
+    of computation. 
+    
+    \paragraph{Recommendation}
+    This paper cannot recommend the VAT model for use at this time. The
+    experimental evidence points to the continuing utility and validity of the
+    venerable RAM model of computation. The VAT model is far more difficult to
+    use than is the RAM model, while it simultaneously fails to give a more
+    accurate prediction of the running times of the tested algorithms.
+    Therefore, the RAM model should continue to be used by most analysts.
